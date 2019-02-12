@@ -1,0 +1,62 @@
+
+
+
+import java.util.Scanner;
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author i14042
+ */
+public class Tester {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Masukkan Jumlah Pinjaman: ");        
+        double pinjaman = sc.nextDouble();
+        System.out.println("Masukan suku bunga: ");
+        double sukuBunga = sc.nextDouble();
+        System.out.println("Masukan tenor: ");
+        double tenor = sc.nextDouble();
+        System.out.println("Masukkan biaya administrasi: ");
+        double biayaAdministrasi = sc.nextDouble();
+        double angsuranPokok = pinjaman / tenor;
+        
+        double cicilanBulan = 0;
+        double bunga = 0;
+        double j = 0;
+        
+        int totalAngsuran = 0;
+        int totalBunga = 0;
+        int totalAngsuranPokok = 0;
+        int totalBiayaAdmin = 0;
+        
+        
+        for (int i = 1; i <= tenor; i++) {
+            bunga = (pinjaman - (j* angsuranPokok)) * (sukuBunga/100) / 12;
+            j++;
+            System.out.printf("Bunga bulan ke "+ i + " :"+ "%.2f",bunga);
+            System.out.println("");
+            cicilanBulan = angsuranPokok + bunga + biayaAdministrasi;
+            System.out.printf("Cicilan bunga bulan ke "+i+":" + "%.2f",cicilanBulan);
+            System.out.println("");
+            System.out.println("");
+            
+            totalAngsuran += cicilanBulan;
+            totalBunga += bunga;
+            totalAngsuranPokok += angsuranPokok;   
+            totalBiayaAdmin += biayaAdministrasi;
+        }
+        
+        System.out.println("Total Bunga = Rp." +totalBunga);
+        System.out.println("Total Angsuran = Rp." + totalAngsuran);
+        System.out.println("Total angsuran Pokok = Rp." + totalAngsuranPokok);
+        
+        
+        
+    }
+}
